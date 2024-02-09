@@ -1,25 +1,36 @@
 const http = require("http");
+const fs = require("fs");
 const server = http.createServer((req, res) => {
-  // console.log("hello from http first server with ES6 support");
-  // console.log(req);
   const url = req.url;
-  console.log(url);
+  const method = req.method;
 
-  if (url == "/") {
-    res.setHeader("content-Type", "text/html");
+  if (url === "/") {
+    // res.setHeader("content-Type", "text/html");
     res.write("<html>");
     res.write("<head><title>Form</title></head>");
     res.write(
-      '<body><form action="" method="POST"><input type="text" name="message"> <button>Send</button> </form> </body>'
+      '<body><form action="/message" method="POST"><input type="text" name="message"> <button>Send</button> </form> </body>'
     );
     res.write("</html>");
   }
-  if (url === "/message") {
-    res.write("<html>");
-    res.write("<head><title>Response from server</title></head>");
-    res.write("<body><h2>Response from server as About Route</h2></body>");
-    res.write("</html>");
+  if (url === "/message" && method === "POST") {
+    const boody = [];
+    req.on("data", (chunck) => {
+      console.log(chunck);
+      body.push(chunck);
+    });
+    
+    req.on("end", () => {
+      const parsedBody = Buffer.concat(body).toString();
+      console.log(parsedBody);
+    });
+
+    fs.writeFileSync("message.txt", "DUMMY DATA");
+    res.statusCode = 302;
+    res.setHeader("Location", "/");
+    return res.end();
   }
+
   //   if (url == "/about") {
   //     res.setHeader("content-Type", "text/html");
   //     res.write("<html>");
