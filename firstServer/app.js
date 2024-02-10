@@ -9,6 +9,9 @@ const server = http.createServer((req, res) => {
     res.write("<html>");
     res.write("<head><title>Form</title></head>");
     res.write(
+      '<body><h1>Node 1st Server</h1></form> </body>'
+    );
+    res.write(
       '<body><form action="/message" method="POST"><input type="text" name="message"> <button>Send</button> </form> </body>'
     );
     res.write("</html>");
