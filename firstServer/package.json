@@ -1,16 +1,17 @@
 {
-  "name": "y",
+  "name": "firstserver",
   "version": "1.0.0",
-  "description": "",
+  "description": "Test App",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app.js"
+    "start": "node app.js",
+    "start-server": "node app.js"
   },
-  "author": "",
+  "author": "RUPAM",
   "license": "ISC",
   "dependencies": {
-    "node": "^21.6.1",
+    "express": "^4.18.2",
     "nodemon": "^3.0.3"
   }
 }
